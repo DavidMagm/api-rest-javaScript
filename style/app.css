@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .header-principal {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .header-principal h1 {
+    margin: 0;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  main {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  #categorias ul {
+    display: flex;
+    gap: 5px;
+    list-style: none;
+    color: #fff;
+  }
+
+  
+  section {
+    margin-bottom: 30px;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  .pelicula {
+    margin-bottom: 20px;
+  }
+  
+  .pelicula img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+  }
+/* Estilos para la sección de tendencias */
+#tendencias {
+    margin-bottom: 30px;
+    overflow-x: auto; /* Agrega scroll horizontal si el contenido excede el ancho */
+  }
+  
+  #tendencias h2 {
+    margin-bottom: 10px;
+  }
+  
+  /* Contenedor de las películas */
+  .tendencia-peliculas-container {
+    display: flex; /* Utiliza flexbox para alinear los elementos horizontalmente */
+    gap: 20px; /* Espacio entre cada película */
+    padding-bottom: 10px; /* Agrega espacio en la parte inferior para que el scroll no se superponga al contenido */
+  }
+  
+  /* Estilos de cada película */
+  .tendencia-pelicula {
+    flex: 0 0 auto; /* Permite que las películas se ajusten al contenido */
+    width: 250px; /* Ancho de cada película */
+    border-radius: 5px;
+    overflow: hidden; /* Oculta contenido adicional si se desborda */
+  }
+  
+  .tendencia-pelicula img {
+    width: 100%; /* Ajusta la imagen al ancho del contenedor */
+    height: auto;
+    border-radius: 5px;
+  }
+
+/* detail card */
+
+#detail-card {
+  position: relative;
+}
+#detail-card img {
+  width: 100%;
+  filter: grayscale(100%);
+}
+.product-description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
+  padding: 20px;
+  overflow-y: auto; /* Agrega scroll vertical si el contenido excede el espacio */
+  max-height: 80vh;
+}
+
+/* display */
+
+.inactive {
+  display: none;
+}

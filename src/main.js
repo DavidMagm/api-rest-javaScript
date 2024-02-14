@@ -1,24 +1,40 @@
+
+
+const API_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjN2E1ZTFiZmIzZjgyOTRiNzgwNjM1YTIyNTRhYTlmMiIsInN1YiI6IjY1NjI0YTdhZWQ5NmJjMDExZTIyNTQ4YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hTVv-CmrPbrNuzoDFn1mgQL-2gzewJV2nR6uFPyRzwU'
+
+const URL = 'https://api.themoviedb.org/3/'
+
+const options = 
+     {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: API_KEY
+        }
+      }
+
+
 const api = axios.create({
-    baseURL: 'https://api.themoviedb.org/3/',
-    headers: {
-        'Content-type' : 'application/json/charset-utf-8'
-    }
-    params: {
-        api_key: ApiRest;
-    }
+  baseURL: URL,
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+    Authorization: API_KEY
+  }
 })
 
-const ApiRest = "c7a5e1bfb3f8294b780635a2254aa9f2";
-const Url = "https://api.themoviedb.org/3/";
 
-const trenddingPreviewList = document.querySelector('.trenddingPreview-movie-list');
-const categoriesContainer = document.querySelector('categories-container');
+
+//const trenddingPreviewList = document.querySelector('#trendingPreview .trendingPreview-movieList');
+//const categoriesListContainer = document.querySelector('.categoriesPreview-list');
 
 async function getTrenddingMoviePreview() {
-    const {data} = await api(`trenddig/movie/day`);
+    const {data} = await api(`trending/movie/day?language=en-US`);
+    //const data = await res.json()
     const movies = data.results;
 
-    movies.array.forEach(movie => {
+    trendingMoviesPreviewList.innerHTML = "";
+    
+    movies.forEach(movie => {
         const movieContainer = document.createElement('div');
         movieContainer.classList.add('movie-container');
         const movieImg = document.createElement('img');
@@ -27,7 +43,7 @@ async function getTrenddingMoviePreview() {
         movieImg.setAttribute('alt', movie.title);
 
         movieContainer.appendChild(movieImg);
-        trenddingPreviewList.appendChild(movieContainer);
+        trendingMoviesPreviewList.appendChild(movieContainer);
 
     });
 }
@@ -35,18 +51,23 @@ async function getTrenddingMoviePreview() {
 getTrenddingMoviePreview()
 
 async function getTrenddingCategoryPreview() {
-    const {data} = await fetch(`trenddig/genre/movie/list`);
-    const categories = data.results;
+    const {data} = await api(`genre/movie/list?language=en`);
+    //const data = await res.json()
 
-    categories.array.forEach(category => {
-        const categoriesList = document.createElement('ul');
-        categoriesList.classList.add('categories-list');
-        const categoryName = document.createElement('li');
-        categoryName.classList.add('category-list-name');
-        categoryName.textContent(`${category.name}`)
+    const categories = data.genres;
+    categoriesPreviewList.innerHTML = "";
 
-        categoriesList.appendChild(categoryName);
-        categoriesContainer.appendChild(categoriesList);
+    categories.forEach(category => {
+      const categoryContainer = document.createElement('div');
+      categoryContainer.classList.add('category-container');
+      const titleCategoyList = document.createElement('h3');
+      titleCategoyList.classList.add('category-title')
+      titleCategoyList.setAttribute('id', 'id' + category.id)
+      const textTitleCategory = document.createTextNode(category.name)
+
+      titleCategoyList.appendChild(textTitleCategory)
+      categoryContainer.appendChild(titleCategoyList)
+      categoriesPreviewList.appendChild(categoryContainer)
 
     });
 }

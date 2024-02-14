@@ -1,90 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/app.css">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&family=Red+Hat+Display:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style/app.css" />
+
+  <title>PlatziMovies</title>
 </head>
+
 <body>
-    <header class="header-principal">
-    <nav>
-        <input type="text">
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#peliculas">Películas</a></li>
-        <li><a href="#categorias">Categorías</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <section id="categorias">
-        <h2>Categorías</h2>
-        <div class="categories-container">
-          <ul class="cateroies-list">
-            <li class="category-list-name">Acción</li>
-            <!-- Más categorías -->
-          </ul>
-        </div>
-      </section>
+  <header id="header" class="header-container">
+    <span class="header-arrow inactive">&lt;</span>
+    <h1 class="header-title">PlatziMovies</h1>
+    <h1 class="header-title header-title--categoryView inactive">Acción</h1>
+
+    <form id="searchForm" class="header-searchForm">
+      <input type="text" placeholder="Vengadores" />
+      <button>🔍</button>
+    </form>
   </header>
 
-  <h1>Lista de Películas</h1>
+  <section id="trendingPreview" class="trendingPreview-container">
+    <div class="trendingPreview-header">
+      <h2 class="trendingPreview-title">Tendencias</h2>
+      <button class="trendingPreview-btn">Ver más</button>
+    </div>
 
-  <main>
-    <section id="peliculas">
-      <h2>Películas Destacadas</h2>
-      <div class="pelicula">
-        <img src="imagen_pelicula1.jpg" alt="Nombre de la película 1">
-        <h3>Nombre de la película 1</h3>
-        <p>Descripción de la película 1...</p>
+    <article class="trendingPreview-movieList">
+      <!-- <div class="movie-container">
+        <img
+          src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+          class="movie-img"
+          alt="Nombre de la película"
+        />
       </div>
-      <div class="pelicula">
-        <img src="imagen_pelicula2.jpg" alt="Nombre de la película 2">
-        <h3>Nombre de la película 2</h3>
-        <p>Descripción de la película 2...</p>
-      </div>
-      <!-- Más películas aquí -->
-    </section>
 
-    <section id="trendding-preview">
-      <div class="trendding-preview-header">
-        <h2>Tendencias</h2>
-        <button>Ver mas</button>
+      <div class="movie-container">
+        <img
+          src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+          class="movie-img"
+          alt="Nombre de la película"
+        />
       </div>
-      <article class="trenddingPreview-movie-list">
-        <div class="movie-container">
-          <img class="movie-img" src="" alt="">
-        </div>
-      </article>
-    </section>
 
-    
-  </main>
+      <div class="movie-container">
+        <img
+          src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+          class="movie-img"
+          alt="Nombre de la película"
+        />
+      </div> -->
+    </article>
+  </section>
 
-  <section id="tendencias">
-    <h2>Tendencias</h2>
-    <div class="tendencia-peliculas-container">
-      <div class="tendencia-pelicula">
-        <img src="imagen_pelicula1.jpg" alt="Nombre de la película 1">
+  <section id="categoriesPreview" class="categoriesPreview-container">
+    <h2 class="categoriesPreview-title">Categorías</h2>
+
+    <article class="categoriesPreview-list">
+      <!-- <div class="category-container">
+        <h3 id="id28" class="category-title">Romance</h3>
       </div>
-      <div class="tendencia-pelicula">
-        <img src="imagen_pelicula2.jpg" alt="Nombre de la película 2">
+
+      <div class="category-container">
+        <h3 id="id16" class="category-title">Drama</h3>
       </div>
-      <!-- Agrega más elementos de películas según sea necesario -->
+
+      <div class="category-container">
+        <h3 id="id14" class="category-title">Acción</h3>
+      </div> -->
+    </article>
+  </section>
+
+  <section id="genericList" class="genericList-container inactive">
+    <div class="movie-container">
+      <img
+        src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+        class="movie-img"
+        alt="Nombre de la película"
+      />
+    </div>
+
+    <div class="movie-container">
+      <img
+        src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+        class="movie-img"
+        alt="Nombre de la película"
+      />
+    </div>
+
+    <div class="movie-container">
+      <img
+        src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+        class="movie-img"
+        alt="Nombre de la película"
+      />
     </div>
   </section>
 
-  <section id="detail-card">
-    <img src="" alt="">
-    <div class="product-description">
-      <h2></h2>
-    </div>
+  <section id="movieDetail" class="movieDetail-container inactive">
+    <h1 class="movieDetail-title">Deadpool</h1>
+    <span class="movieDetail-score">7.6</span>
+    <p class="movieDetail-description">
+      Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to save a boy's life.
+    </p>
+
+    <article class="categories-list">
+      <div class="category-container">
+        <h3 id="id28" class="category-title">Romance</h3>
+      </div>
+
+      <div class="category-container">
+        <h3 id="id16" class="category-title">Drama</h3>
+      </div>
+
+      <div class="category-container">
+        <h3 id="id14" class="category-title">Acción</h3>
+      </div>
+    </article>
+
+    <article class="relatedMovies-container">
+      <h2 class="relatedMovies-title">Películas similares</h2>
+
+      <div class="relatedMovies-scrollContainer">
+        <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div>
+        
+        <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div>
+        
+        <div class="movie-container">
+          <img
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            class="movie-img"
+            alt="Nombre de la película"
+          />
+        </div>
+      </div>
+    </article>
   </section>
 
   <footer>
     <p>&copy; 2023 Nombre de la Empresa - Todos los derechos reservados</p>
   </footer>
+  
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./src/node.js"></script>
   <script src="./src/main.js"></script>
+  <script src="./src/navigation.js"></script>
 </body>
 </html>

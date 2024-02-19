@@ -1,9 +1,14 @@
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
 arrowBtn.addEventListener('click', () => {
-    location.hash = '#home'
+    location.hash = window.history.back()
   });
-  
+searchFormBtn.addEventListener('click', () => {
+    location.hash = '#search=' + searchFormInput.value;
+})  
+trendingBtn.addEventListener('click', () => {
+    location.hash = '#trends'
+})
 function navigator() {
     if (location.hash.startsWith('#trends')) {
         trendsPage()
@@ -61,12 +66,41 @@ function categoriesPage() {
 function searchPage() {
     // getTrenddingMoviePreview()
     // getTrenddingCategoryPreview()
+    headerSection.classList.remove('header-container--long')
+    headerSection.style.background = '';
+    arrowBtn.classList.remove('inactive')
+    arrowBtn.classList.remove('header-arrow--white')
+    headerTitle.classList.add('inactive')
+    headerCategoryTitle.classList.add('inactive');
+    searchForm.classList.remove('inactive')
+    trendingPreviewSection.classList.add('inactive');
+    genericSection.classList.remove('inactive');
+    movieDetailSection.classList.add('inactive')
+    categoriesPreviewSection.classList.add('inactive')
+
+    const [_,query] = location.hash.split('=');
+    getMovieBySearch(query)
     console.log('#search')
 }
 
 function trendsPage() {
     // getTrenddingMoviePreview()
     // getTrenddingCategoryPreview()
+    headerSection.classList.remove('header-container--long')
+    headerSection.style.background = '';
+    arrowBtn.classList.remove('inactive')
+    arrowBtn.classList.remove('header-arrow--white')
+    headerTitle.classList.add('inactive')
+    headerCategoryTitle.classList.remove('inactive');
+    searchForm.classList.add('inactive')
+    trendingPreviewSection.classList.add('inactive');
+    genericSection.classList.remove('inactive');
+    movieDetailSection.classList.add('inactive')
+    categoriesPreviewSection.classList.add('inactive')
+
+    headerCategoryTitle.innerHTML = 'Tendencias';
+
+    getTrenddingMovie()
     console.log('#trends')
 }
 

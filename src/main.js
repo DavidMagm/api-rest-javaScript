@@ -52,11 +52,28 @@ async function getTrenddingMoviePreview() {
     createMovies(movies, trendingMoviesPreviewList);
 }
 
+async function getTrenddingMovie() {
+  const {data} = await api(`trending/movie/day?language=en-US`);
+  //const data = await res.json()
+  const movies = data.results;
+
+  genericSection.innerHTML = "";
+  createMovies(movies, genericSection);
+}
+
 // 
 
-async function getMovieByCategory(name) {
-  const {data} = await api(`discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${name}`);
+async function getMovieByCategory(id) {
+  const {data} = await api(`discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${id}`);
   //const data = await res.json()
+  const movies = data.results;
+
+  genericSection.innerHTML = "";
+  createMovies(movies, genericSection)
+}
+
+async function getMovieBySearch(query) {
+  const {data} = await api(`search/movie?query=${query}&include_adult=true&language=en-US`);
   const movies = data.results;
 
   genericSection.innerHTML = "";

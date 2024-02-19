@@ -27,26 +27,42 @@ const api = axios.create({
 //const trenddingPreviewList = document.querySelector('#trendingPreview .trendingPreview-movieList');
 //const categoriesListContainer = document.querySelector('.categoriesPreview-list');
 
+
+function createMovies(movies, container) {
+  movies.forEach(movie => {
+    const movieContainer = document.createElement('div');
+    movieContainer.classList.add('movie-container');
+    const movieImg = document.createElement('img');
+    movieImg.classList.add('movie-img');
+    movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w300${movie.poster_path}`)
+    movieImg.setAttribute('alt', movie.title);
+
+    movieContainer.appendChild(movieImg);
+    container.appendChild(movieContainer);
+
+});
+}
+
 async function getTrenddingMoviePreview() {
     const {data} = await api(`trending/movie/day?language=en-US`);
     //const data = await res.json()
     const movies = data.results;
 
     trendingMoviesPreviewList.innerHTML = "";
-    
-    movies.forEach(movie => {
-        const movieContainer = document.createElement('div');
-        movieContainer.classList.add('movie-container');
-        const movieImg = document.createElement('img');
-        movieImg.classList.add('movie-img');
-        movieImg.setAttribute('src', `https://image.tmdb.org/t/p/w300${movie.poster_path}`)
-        movieImg.setAttribute('alt', movie.title);
-
-        movieContainer.appendChild(movieImg);
-        trendingMoviesPreviewList.appendChild(movieContainer);
-
-    });
+    createMovies(movies, trendingMoviesPreviewList);
 }
+
+// 
+
+async function getMovieByCategory(name) {
+  const {data} = await api(`discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${name}`);
+  //const data = await res.json()
+  const movies = data.results;
+
+  genericSection.innerHTML = "";
+  createMovies(movies, genericSection)
+}
+
 
 getTrenddingMoviePreview()
 
@@ -64,6 +80,10 @@ async function getTrenddingCategoryPreview() {
       titleCategoyList.classList.add('category-title')
       titleCategoyList.setAttribute('id', 'id' + category.id)
       const textTitleCategory = document.createTextNode(category.name)
+
+      titleCategoyList.addEventListener('click', () => {
+        location.hash = `#category=${category.id}-${category.name}`
+      });
 
       titleCategoyList.appendChild(textTitleCategory)
       categoryContainer.appendChild(titleCategoyList)
